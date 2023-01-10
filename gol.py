@@ -41,23 +41,42 @@ def iterate_gol(arr):
 
 
 def print_world(world):
-    print(''.join(['-' for _ in range(len(world[0]))]))
+    print(''.join(['-_' for _ in range(len(world[0]))]))
     for y in range(0, len(world)):
-        out_str = '|'
+        out_str = '<|'
         for x in range(0, len(world[y])):
             if world[y][x] == 0:
-                out_str += ' '
+                out_str += '  '
             else:
-                out_str += 'X'
-        out_str += '|'
+                out_str += '[]'
+        out_str += '|>'
         print(out_str)
-    print(''.join(['-' for _ in range(len(world[0]))]))
+    print(''.join(['_-' for _ in range(len(world[0]))]))
 
 
 def overwrite(world, pattern, x, y):
     for j in range(len(pattern)):
         for i in range(len(pattern[j])):
             world[y+j][x+i] = pattern[j][i]
+
+def empty_world(width, height):
+    return [[0 for i in range(width)] for _ in range(height)]
+
+def full_world(width, height):
+    return [[1 for i in range(width)] for _ in range(height)]
+
+def random_world(width, height):
+    return [[random.randint(0, 1) for i in range(width)] for _ in range(height)]
+
+def inverse_world(world, width, height):
+    new_world = full_world(width, height)
+    for y in range(height):
+        for x in range(width):
+            if world[y][x] == 1:
+                new_world[y][x] = 0
+
+    return new_world
+
 
 if __name__ == '__main__':
     width = 50
