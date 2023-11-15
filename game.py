@@ -24,10 +24,10 @@ from pygame.locals import (
 
 pygame.init()
 
-WIDTH = 40
-HEIGHT = 40
+WIDTH = 400
+HEIGHT = 400
 
-CELL_SIZE = 20
+CELL_SIZE = 2
 
 SCREEN_WIDTH = WIDTH * CELL_SIZE
 SCREEN_HEIGHT = HEIGHT * CELL_SIZE
@@ -75,4 +75,4 @@ while True:
     world = gol.next_gol(world)
     new_world = False
 
-    time.sleep(.1)
+    #time.sleep(.1)
